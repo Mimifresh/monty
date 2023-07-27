@@ -2,11 +2,10 @@
 /**
   *nop- nothing
   *@head: stack head
-  *@counter: line_number
-  *Return: no return
+  *@count: line_number
  */
-void nop(stack_t **head, unsigned int counter)
+void nop(stack_t **head, unsigned int count)
 {
-	(void) counter;
+	(void) count;
 	(void) head;
 }

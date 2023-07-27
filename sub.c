@@ -2,28 +2,27 @@
 /**
   *sub- sustration
   *@head: stack head
-  *@counter: line_number
-  *Return: no return
+  *@count: line_number
  */
-void sub(stack_t **head, unsigned int counter)
+void sub(stack_t **head, unsigned int count)
 {
 	stack_t *temp;
-	int sus, nodes;
+	int value, nodes;
 
 	temp = *head;
 	for (nodes = 0; temp != NULL; nodes++)
 		temp = temp->next;
 	if (nodes < 2)
 	{
-		fprintf(stderr, "L%d: can't sub, stack too short\n", counter);
+		fprintf(stderr, "L%d: can't sub, stack too short\n", count);
 		fclose(files.file);
 		free(files.content);
-		free_stack(*head);
+		freestack(*head);
 		exit(EXIT_FAILURE);
 	}
 	temp = *head;
-	sus = temp->next->n - temp->n;
-	temp->next->n = sus;
+	value = temp->next->n - temp->n;
+	temp->next->n = value;
 	*head = temp->next;
 	free(temp);
 }

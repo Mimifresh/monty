@@ -2,36 +2,36 @@
 /**
  * push - add node to the stack
  * @head: stack head
- * @counter: line_number
+ * @count: line_number
  * Return: no return
 */
-void push(stack_t **head, unsigned int counter)
+void push(stack_t **head, unsigned int count)
 {
-	int n, j = 0, flag = 0;
+	int n, i = 0, flag = 0;
 
 	if (files.arg)
 	{
 		if (files.arg[0] == '-')
-			j++;
-		for (; files.arg[j] != '\0'; j++)
+			i++;
+		for (; files.arg[i] != '\0'; i++)
 		{
-			if (files.arg[j] > 57 || files.arg[j] < 48)
+			if (files.arg[i] > 57 || files.arg[i] < 48)
 				flag = 1; }
 		if (flag == 1)
-		{ fprintf(stderr, "L%d: usage: push integer\n", counter);
+		{ fprintf(stderr, "L%d: usage: push integer\n", count);
 			fclose(files.file);
 			free(files.content);
-			free_stack(*head);
+			freestack(*head);
 			exit(EXIT_FAILURE); }}
 	else
-	{ fprintf(stderr, "L%d: usage: push integer\n", counter);
+	{ fprintf(stderr, "L%d: usage: push integer\n", count);
 		fclose(files.file);
 		free(files.content);
-		free_stack(*head);
+		freestack(*head);
 		exit(EXIT_FAILURE); }
 	n = atoi(files.arg);
 	if (files.lifi == 0)
-		addnode(head, n);
+		add_node(head, n);
 	else
-		addqueue(head, n);
+		add_queue(head, n);
 }

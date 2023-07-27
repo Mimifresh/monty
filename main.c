@@ -1,10 +1,11 @@
 #define  _GNU_SOURCE
 #include "monty.h"
+
 bus_t files = {NULL, NULL, NULL, 0};
 /**
 * main - monty code interpreter
-* @argc: number of arguments
-* @argv: monty file location
+* @argc: argument count
+* @argv: argument vector
 * Return: 0 on success
 */
 int main(int argc, char *argv[])
@@ -14,7 +15,7 @@ int main(int argc, char *argv[])
 	size_t size = 0;
 	ssize_t read_line = 1;
 	stack_t *stack = NULL;
-	unsigned int counter = 0;
+	unsigned int count = 0;
 
 	if (argc != 2)
 	{
@@ -33,14 +34,14 @@ int main(int argc, char *argv[])
 		content = NULL;
 		read_line = getline(&content, &size, file);
 		files.content = content;
-		counter++;
+		count++;
 		if (read_line > 0)
 		{
-			execute(content, &stack, counter, file);
+			execute_op(content, &stack, count, file);
 		}
 		free(content);
 	}
-	free_stack(stack);
+	freestack(stack);
 	fclose(file);
 return (0);
 }

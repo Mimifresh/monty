@@ -2,22 +2,21 @@
 /**
  * pop - prints the top
  * @head: stack head
- * @counter: line_number
- * Return: no return
+ * @count: line_number
 */
-void pop(stack_t **head, unsigned int counter)
+void pop(stack_t **head, unsigned int count)
 {
-	stack_t *h;
+	stack_t *ptr;
 
 	if (*head == NULL)
 	{
-		fprintf(stderr, "L%d: can't pop an empty stack\n", counter);
+		fprintf(stderr, "L%d: can't pop an empty stack\n", count);
 		fclose(files.file);
 		free(files.content);
-		free_stack(*head);
+		freestack(*head);
 		exit(EXIT_FAILURE);
 	}
-	h = *head;
-	*head = h->next;
-	free(h);
+	ptr = *head;
+	*head = ptr->next;
+	free(ptr);
 }
